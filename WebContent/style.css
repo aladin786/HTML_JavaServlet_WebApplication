@@ -1,0 +1,38 @@
+div.box {
+	width: 35%;
+	border: 1px solid pink;
+	margin-left: 10px;
+	padding: 20px;
+	float: left
+}
+
+input, select, textarea {
+	margin: 3px;
+	padding: 5px;
+	border-radius: 2px;
+	border: 1px solid pink
+}
+
+.footer {
+	position: fixed;
+	margin-bottom: 0px;
+	padding: 50px;
+	height: 50px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	text-align: center;
+	background: #101010;
+	color: white;
+}
+
+#bs-example-navbar-collapse-1 {
+	text-align:center; 
+}
+.centered-navbar {
+	display:inline-block; 
+	float:none; 
+	vertical-align:top; 
+}
+
+

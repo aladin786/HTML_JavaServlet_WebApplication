@@ -1,0 +1,83 @@
+<html>
+<head>
+<title>Graph View</title>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+</head>
+<body>
+<div id="container" style="min-width: 310px; height: 445px; margin: 0 auto"></div>
+<script type="text/JavaScript">
+Highcharts.chart('container', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'KUMBAKONAM DIVISION'
+    },
+    subtitle: {
+        text: 'Details of Security Proceedings - From 06.09.2013 to till 31.12.2013'
+    },
+    xAxis: {
+        categories: [
+            '107',
+            '108',
+            '109',
+            '110',
+            '110(g)',
+            '133',
+            '144',
+            '145',
+            '174',
+            'TN Act 14/1982',
+            'Total'
+        ],
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Value'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'September',
+        data: [0, 0, 15, 4, 0, 0, 0, 0, 2, 0, 21]
+
+    }, {
+        name: 'October',
+        data: [0, 0, 20, 4, 0, 0, 0, 0, 3, 6, 33]
+
+    }, {
+        name: 'November',
+        data: [0, 0, 1, 8, 0, 0, 0, 0, 2, 0, 11]
+
+    }, {
+        name: 'December',
+        data: [0, 0, 14, 13, 0, 0, 0, 0, 1, 0, 28]
+
+    }, {
+        name: '2013',
+        data: [0, 0, 50, 29, 0, 0, 0, 0, 8, 6, 93]
+
+    }]
+});
+</script>
+<center>
+<strong>109 / 110 Bond breach--Nil </strong><br />
+<strong>Fine Amount collected--Nil </strong>
+</center>
+</body>
+</html>

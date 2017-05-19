@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>View Report</title>
+<style>
+div
+#frm1 { display: none; float: right; }
+#frm2 { display: none; float: right; margin-right: 10px; }
+#wrap { width: 600px; height: 390px; padding: 0; overflow: hidden; }
+#panel2{ display:none; }
+
+#category2 option{
+    display:none;
+}
+
+#category2 option.label{
+    display:block;
+}
+ 
+#category3 option{
+	display:none;
+}
+
+#catetory3 option.label{
+	display:block;
+}
+</style>
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script>
+$(function(){
+
+//fisrt I store in 2 var the reference of two <select>
+
+var $cat = $("#category1"),
+$subcat = $("#category2"),
+$resubcat = $("#category3");
+
+//this is the same thing if you write in your HTML onChange="" in first <select>
+
+$cat.on("change",function(){
+
+//store the value of first select every time it change
+var _rel = $(this).val();
+
+//clean the second select (value and option active) to prevent bad link (cat1 with subcat of cat2)
+$subcat.find("option").attr("style","");
+$subcat.val("");
+
+//if no option is selected i disable the second select
+if(!_rel) return $subcat.prop("disabled",true);
+
+//if a option si selected i show the option linked by rel attr
+$subcat.find("[rel="+_rel+"]").show();
+$subcat.prop("disabled",false);
+});
+
+$subcat.on("change",function(){
+
+var _rel =$(this).val();
+$resubcat.find("option").attr("style","");
+$resubcat.val("");
+
+if (!_rel) return $resubcat.prop("disabled",true);
+
+$resubcat.find("[rel="+_rel+"]").show();
+$resubcat.prop("disabled",false);
+});
+
+});
+</script>
+    
+<script>
+function showPanel(a, b) {
+	  document.getElementById(a).style.display = "inline-block";
+	  document.getElementById(b).style.display = "none";
+	  
+	  if (a === 'panel1','panel2') {
+	    document.getElementById('frm1').style.display = "inline-block";
+	    document.getElementById('frm2').style.display = "inline-block";
+	  } else {
+	    document.getElementById('frm2').style.display = "none";
+	    document.getElementById('frm2').style.display = "none";
+	  }
+	}
+</script>
+</head>
+<body>
+<div style="display: inline; float: left; margin-left: 0px;">
+	<form id="formname" name="formname" method="post" action="submitform.asp" >
+    <table width="50%" border="0" cellspacing="0" cellpadding="5">
+        <div style="display: inline; float: left; margin-left: 0px;"><strong>Year :</strong>
+                <select name="category1" id="category1">
+                    <option class="label" value="">-Year-</option>
+					<option value="17">2017</option>
+					<option value="16">2016</option>
+					<option value="15">2015</option>
+					<option value="14">2014</option>
+					<option value="13">2013</option>
+                </select>
+            </td>
+        </div>
+        <div style="display: inline; float: left; margin-left: 20px;"><strong>Report Name :</strong>
+                <select disabled="disabled" id="category2" name="category2">
+                    <option class="label" value="">-Report Name-</option>
+                    <option value="1">Security Proceeding</option>
+                    <option value="2">Municipality-Old List</option>
+                    <option value="3">Tvmr-Old List</option>
+                    <option value="4">Ppn Old list</option>
+                    <option value="5">Kbk Old List</option>
+                    <option value="6">Present List-Ppn, Tvmr</option>
+                    <option value="7">Encrochments</option>
+                    <option value="8">Gun License</option>
+                    <option value="9">Gun License (Div)</option>
+                    <option value="10">Printing Press</option>
+                    <option value="11">107 Details</option>
+                    <option value="12">Tasmac</option>
+                    <option value="13">Shop details-With Bar</option>
+                    <option value="14">Shp details-Without Bar</option>
+                </select>
+            </td>
+        </div>
+        <div style="display: inline; float: left; margin-left: 20px;"><strong>Taluk :</strong>
+                <select disabled="disabled" id="category3" name="category3">
+                    <option class="label" value="">-Taluk-</option>
+                    <option value="1">Kumbakonam</option>
+                    <option value="2">Thiruvidaimarudhur</option>
+                    <option value="3">Papanasam</option>
+                </select>
+            </td>
+        </div>
+    </table>
+</form>
+</div>
+
+<div style="display: inline; float: right; margin-right: 0px;">
+  <input class="btn btn-primary" type="button" id="buton2" value="View in Excel" onclick="showPanel('panel1', 'panel2')" />
+  <input class="btn btn-primary" type="button" id="button1" value="View in Graph" onclick="showPanel('panel2', 'panel1')" />
+</div>
+<br clear="all" /><br clear="all" />
+<iframe src="resources\excels\Law n Order-2013.htm" id="panel1" width="100%" height="500px" hidden></iframe>
+<iframe src="graph2013.html" id="panel2" width="100%" height="510px" hidden></iframe>
+
+  <div id="frm1">
+    <form action="RejectEmailSendingServlet" method="post">
+      <input type="submit" class="btn btn-primary" value="Reject" />
+    </form>
+  </div>
+  <div id="frm2">
+    <form action="ApproveEmailSendingServlet" method="post">
+      <input type="submit" class="btn btn-primary" value="Approve" />
+    </form>
+  </div>
+
+<br clear="all" /><br clear="all" /><br clear="all" /><br clear="all" />
+<br clear="all" /><br clear="all" /><br clear="all" /><br clear="all" />
+
+</body>
+</html>

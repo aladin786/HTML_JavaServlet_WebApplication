@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Result</title>
+<style type="text/css">
+body
+{
+   width: 100%;
+   Height: 100%;
+}
+#main_body {
+    width: 450px;
+    position: absolute;
+}
+</style>
+</head>
+<body>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    var windowHeight = $(window).height();
+    var windowWidth = $(window).width();
+    var main = $("#main_body");    
+    $("#main_body").css({ top: ((windowHeight / 2) - (main.height() / 2)) + "px",
+                          left:((windowWidth / 2) - (main.width() / 2)) + "px" });
+});
+</script>
+        <div id="main_body">
+          <h2><a href="index.html" style="color: orange"><strong>Click here to login again</strong></a></h2>
+        </div>
+    </body>
+</html>
